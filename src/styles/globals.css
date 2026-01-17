@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-image: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%),
+    radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.18), transparent 55%),
+    linear-gradient(180deg, #0b1020 0%, #05070f 100%);
+}
+
+.chart-tooltip {
+  @apply absolute rounded-lg bg-slate-900/90 border border-slate-700 px-3 py-2 text-xs text-slate-100 shadow-lg;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+}
