@@ -119,6 +119,10 @@ async function fetchYahooWeekly(ticker: string): Promise<YahooWeeklyResult> {
     const close = adjclose?.[i] ?? quote.close?.[i];
     if (
       typeof time !== "number" ||
+      typeof open !== "number" ||
+      typeof high !== "number" ||
+      typeof low !== "number" ||
+      typeof close !== "number" ||
       !Number.isFinite(open) ||
       !Number.isFinite(high) ||
       !Number.isFinite(low) ||
