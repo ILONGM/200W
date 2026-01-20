@@ -92,7 +92,7 @@ export default function HomePage() {
             Long-term trend lens for any ticker
           </h1>
           <p className="max-w-2xl text-slate-300">
-            Fetch US equities (stooq) and overlay a 200-week moving average. Zoom and pan to explore
+            Fetch market data and overlay a 200-week moving average. Zoom and pan to explore
             two decades of weekly structure.
           </p>
         </header>
