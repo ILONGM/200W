@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import type { UTCTimestamp } from "lightweight-charts";
 import PriceChart, { type ChartSeries } from "@/components/PriceChart";
 
 const DEFAULT_TICKER = "AAPL";
@@ -23,6 +24,8 @@ type ApiResponse = {
   ma: { time: number; value: number }[];
   error?: string;
 };
+
+const toUtcTimestamp = (time: number) => time as UTCTimestamp;
 
 export default function HomePage() {
   const [ticker, setTicker] = useState(DEFAULT_TICKER);
@@ -55,9 +58,18 @@ export default function HomePage() {
         throw new Error(payload.error ?? "Unknown error");
       }
       setData({
-        candles: payload.candles,
-        line: payload.line,
-        ma: payload.ma
+        candles: payload.candles.map((candle) => ({
+          ...candle,
+          time: toUtcTimestamp(candle.time)
+        })),
+        line: payload.line.map((point) => ({
+          ...point,
+          time: toUtcTimestamp(point.time)
+        })),
+        ma: payload.ma.map((point) => ({
+          ...point,
+          time: toUtcTimestamp(point.time)
+        }))
       });
       setSource(payload.source);
       setCurrency(payload.currency ?? null);

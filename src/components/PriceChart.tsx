@@ -9,13 +9,14 @@ import {
   type IChartApi,
   type ISeriesApi,
   type LineData,
-  type CandlestickData
+  type CandlestickData,
+  type UTCTimestamp
 } from "lightweight-charts";
 
 export type ChartSeries = {
-  candles: CandlestickData[];
-  line: LineData[];
-  ma: LineData[];
+  candles: CandlestickData<UTCTimestamp>[];
+  line: LineData<UTCTimestamp>[];
+  ma: LineData<UTCTimestamp>[];
 };
 
 type ChartType = "line" | "candles";
